@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens */
+:root{
+  --bg:#FAF9F6;
+  --surface:#FFFFFF;
+  --border:#EFECE6;
+  --text:#1E293B;
+  --muted:#6B7280;
+  --primary:#C0841F;
+  --primary-600:#A16207;
+  --ring:#F59E0B;
+  --success:#10B981;
+  --error:#EF4444;
+}
+
+/* Base */
+html, body { background: var(--bg); color: var(--text); }
+
+/* Helpers */
+.card{ background:var(--surface); border:1px solid var(--border); }
+.shadow-card{ box-shadow:0 6px 20px rgba(0,0,0,.06); }
+a.no-underline { text-decoration: none; }
+a.no-underline:visited { color: var(--text); }
+/* --- Buttons (plain CSS, matches the mock) --- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;               /* rounded-xl */
+  padding: 12px 20px;                /* px-5 py-3 */
+  font-weight: 600;                  /* font-semibold */
+  border: 1px solid transparent;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+/* Primary (Save verse) */
+.button--primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.button--primary:hover { background: var(--primary-600); }
+.button--primary:focus { outline: none; box-shadow: 0 0 0 4px rgba(245,158,11,.4); } /* --ring */
+
+/* Secondary (View saved) */
+.button--secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+.button--secondary:hover { background: #F8F5EF; }
+.button--secondary:focus { outline: none; box-shadow: 0 0 0 4px rgba(245,158,11,.3); }
+
+/* Remove link underline/purple */
+a.button { text-decoration: none; }
+a.button:visited { color: var(--text); }
+
+.button--danger {
+  background: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FCA5A5;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+}
+.button--danger:hover { background: #FECACA; }
+.button--danger:focus { outline: none; box-shadow: 0 0 0 4px rgba(239,68,68,.25); }
+/* Layout */
+.container{
+  max-width: 64rem;         /* ~1024px */
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;   /* py-10 px-6 */
+}
+
+/* Cards */
+.card{
+  border-radius: 16px;                 /* rounded-2xl */
+  padding: 2rem;                       /* p-8 */
+  box-shadow: 0 6px 20px rgba(0,0,0,.06); /* soft shadow */
+}
+
+/* Typography */
+.h1{
+  font-size: clamp(2.25rem, 3.5vw + 1rem, 3.25rem);
+  font-weight: 800;            /* bold / display */
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.verse{
+  font-size: 1.5rem;           /* text-2xl */
+  line-height: 1.7;            /* relaxed */
+  margin-bottom: 1.5rem;
+}
+.reference{
+  font-size: .875rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* Controls block */
+.controls-title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.controls-row{
+  display: grid;
+  grid-template-columns: 1fr auto auto; /* input | primary | secondary */
+  gap: .75rem;
+  align-items: center;
+}
+@media (max-width: 640px){
+  .controls-row{
+    grid-template-columns: 1fr;        /* stack on mobile */
+  }
+}
+
+/* Input */
+.input{
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: .875rem 1rem;               /* comfortable height */
+  font-size: 1rem;
+}
+.input::placeholder{ color:#9AA4B2; }
+.input:focus{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(245,158,11,.30); /* --ring */
+}
+
+/* Buttons (you already have .button / variants; these ensure the look) */
+.button{ display:inline-flex; align-items:center; justify-content:center; border-radius:12px; padding:12px 20px; font-weight:600; border:1px solid transparent; line-height:1.2; cursor:pointer; }
+.button--primary{ background:var(--primary); color:#fff; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+.button--primary:hover{ background:var(--primary-600); }
+.button--primary:focus{ outline:none; box-shadow:0 0 0 4px rgba(245,158,11,.40); }
+
+.button--secondary{ background:var(--surface); color:var(--text); border:1px solid var(--border); }
+.button--secondary:hover{ background:#F8F5EF; }
+.button--secondary:focus{ outline:none; box-shadow:0 0 0 4px rgba(245,158,11,.30); }
+
+a.button{ text-decoration:none; color:var(--text); }
+a.button:visited{ color:var(--text); }   /* avoid purple visited link */
