@@ -64,9 +64,14 @@ export default function Home() {
       if (!res.ok) throw new Error(json.error || "Failed to load notes");
 
       setNotes(json.context || json.notes || ""); // support either field name
-    } catch (e: any) {
-      setNotesError(e?.message ?? "Could not load notes");
-    } finally {
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setNotesError(e.message);
+      } else {
+        setNotesError("Could not load notes");
+      }
+    }
+     finally {
       setLoadingNotes(false);
     }
   }
